@@ -137,3 +137,8 @@ commit timestamps, which are the authoritative record.
   (seeds 0, 1; best 53.3 < 65). All 4 configurations avoid a constant answer in both seeds (Yes-rates 0.36-0.75).
   Positive control div3 A (lr 5e-5, 10 ep) = 92.1 >= 90. With up to 10,800 supervised answer tokens (30 epochs) and no
   collapse, answer-only supervision still does not learn div7 at this n. Rows: results/v2/sweep/.
+- 2026-09-26 (time = this commit) **Clarification (wording only; no verdict changes).** The "Reviewers asked" in the S12
+  entry, and any mention of "review" in queue comments or notes from the night of 2026-09-25/26, refer to internal
+  review passes run with AI agents (simulated reviewer panels) during the study, not to peer review; this work has not
+  been peer reviewed. All of S7-S12 were proposed by the AI assistant (S12 in response to such an internal pass) and
+  each was committed before any of its cells ran.
