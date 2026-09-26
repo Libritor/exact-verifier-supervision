@@ -53,7 +53,7 @@ INCLUDE = [
     "results/THINKING_VS_DATA.md", "results/GATE_FINETUNE.md", "results/GATE_FINETUNE_STUDY.md",
     "results/LOGIC_FINETUNE.md",
     "results/logic_dataset.json",
-    "results/queue_L1.txt", "results/queues/*.txt",
+    "results/queue_L1.txt", "results/queues/*.txt", "results/queues/**/*.txt",
     "results/thinking_vs_data/*.json", "results/thinking_vs_data/*.jsonl",
     "results/v2/*.json", "results/v2/*.txt",
     "results/v2/runs_*.jsonl", "results/v2/evals_*.jsonl",
@@ -234,7 +234,7 @@ is regenerated from the files in this folder.
 | `experiments/` | all experiment and analysis code. Workers: `exp_thinking_ft_worker.py` (prior grid and S1 cells), `exp_worker_v2.py` (all later cells: arms base/A/B/C/B'/D, eval-only controls), `exp_worker_star.py` (arm S: sample K solutions, keep those whose final answer the exact verifier accepts, fine-tune). Queue runners: `run_queue.py`, `run_queue2.py`. Dataset generators: `exp_thinking_dataset.py`, `exp_dataset_v2.py` (fixed seeds), `check_v2.py` (dataset invariants). Analysis: `analysis_common.py` (loaders), `analysis_stats.py` (bootstrap CIs, McNemar, Holm), `analysis_steps.py` (per-step trace parsing, per-step accuracy q), `analysis_rules.py` (shortcut rules), `analysis_probe.py` (surface probe), `analysis_tokens.py`, `analysis_report.py`. `exp_gate_*` and `exp_logic_*`: the earlier answer-only study reported in the appendix. |
 | `paper/exp/` | `build_all.py` (one command: analysis -> numbers -> figures -> PDF), `make_numbers.py` (every number in the text is a macro written to `paper/numbers.tex` and `paper/tab_runs.tex`), `make_figures.py`, `make_fig_story.py`, `numbers.json` (each macro with its source). |
 | `paper/` | LaTeX source of the submission and the style files needed to build it. |
-| `PREDICTIONS.md` | second preregistration (S1..S6) and its append-only decision log (S7..S11, outcomes, corrections). |
+| `PREDICTIONS.md` | second preregistration (S1..S6) and its append-only decision log (S7..S12, outcomes, corrections). |
 | `results/THINKING_VS_DATA.md` | first preregistration (H1..H4, prior grid) with its results appended below it. |
 | `results/GATE_FINETUNE*.md`, `results/LOGIC_FINETUNE.md` | write-ups of the earlier answer-only study (appendix table). |
 | `results/thinking_vs_data/` | prior-grid dataset (`datasets.json`), B-ext traces (`ornith_traces.jsonl`), prior-grid runs (`runs.jsonl`) and the S1 replication runs (`runs_L1.jsonl`). |
@@ -315,9 +315,9 @@ regeneration is needed to reproduce any cell.
    div7; 240 problem-disjoint test items; paired McNemar, Holm across tasks).
 2. **Second preregistration** (`PREDICTIONS.md`): decision rules S1..S6, committed (P1) before any of the
    runs it governs. S1 was a go/no-go replication of the prior div7 result, run first.
-3. **Append-only decision log**: each new hypothesis (S7, S8/S9, S10, S11) was committed to the repository
+3. **Append-only decision log**: each new hypothesis (S7, S8/S9, S10, S11, S12) was committed to the repository
    before any cell it governs had started, and each outcome was logged when its cells finished, including
-   every failed prediction (S5, S10) and a post hoc correction of an audit (S10). Earlier entries were never
+   every failed prediction (S5, S9, S10, S11) and a post hoc correction of an audit (S10). Earlier entries were never
    rewritten, except that estimated clock times were replaced by the commit times on the day they were written.
 4. The commit is the time stamp. Hashes are replaced by labels here; the times below come from the version
    history (author time with UTC offset). P1..P6 are the labels used in the paper's appendix; commits marked
