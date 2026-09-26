@@ -105,7 +105,7 @@ def predicted_trace(task, model=MN.M15):
     return None
 
 
-TASK_COLOR = {"div7": "#eb6834", "div13": "#4a3aa7", "div11": "#1baf7a", "div3": "#8a8984", "div7_6d": "#eb6834"}
+TASK_COLOR = {"div7": "#eb6834", "div13": "#4a3aa7", "div11": "#1baf7a", "div3": "#8a8984", "div2": "#3c3b38", "div7_6d": "#eb6834"}
 
 
 def dose_points(task, arm):
@@ -146,17 +146,39 @@ def fig_map():
     if dose_points("div7", "A") or dose_points("div13", "A"):
         ax.annotate("A (div7, div13)", (550, 50), xytext=(0, 4), textcoords="offset points", fontsize=6.5,
                     color=MUTED, ha="right")
+    # (b) one point per (task, n): mean per-step accuracy q over seeds, bar = range over seeds; one line per task
+    # with several n; filled = cell predicted in advance by S7 or S9, hollow = observed before S7 or not predicted
+    from collections import defaultdict
+    from matplotlib.lines import Line2D
+    cells = defaultdict(list)
     for r in MN.trans_rows():
-        key = (r["task"], r["n"])
-        pre = key in MN.PRE_S7_CELLS
-        pred = key in MN.S7_CELLS or key in MN.S9_CELLS
-        col = TASK_COLOR.get(r["task"], MUTED)
-        for val, mk in ((r["p"], "s"), (r["accuracy"], "o")):
-            bx.scatter([r["m"]], [100 * val], s=22, marker=mk, facecolor=col if pred else "white",
-                       edgecolor=col if (pre or pred) else "#b9b8b2", linewidth=1.2, zorder=3)
-    for t, (xy, txt) in {"div11": ((6.5, 99), "div11"), "div3": ((24, 100), "div3")}.items():
-        if any(r["task"] == t for r in MN.trans_rows()):
-            bx.annotate(txt, xy, xytext=(3, -9), textcoords="offset points", fontsize=6, color=INK)
+        cells[(r["task"], r["n"])].append(r)
+    agg = {}
+    for (t, n), rs in cells.items():
+        qs = [100 * r["p"] for r in rs]
+        agg[(t, n)] = (rs[0]["m"], sum(qs) / len(qs), min(qs), max(qs), len(qs))
+    for t in ("div7", "div13"):
+        pts = sorted((v[0], v[1], n) for (tt, n), v in agg.items() if tt == t)
+        if len(pts) > 1:
+            bx.plot([p[0] for p in pts], [p[1] for p in pts], color=TASK_COLOR[t], lw=1.2, zorder=2)
+    for (t, n), (m, q, lo, hi, k) in agg.items():
+        col = TASK_COLOR.get(t, MUTED)
+        pred = (t, n) in MN.S7_CELLS or (t, n) in MN.S9_CELLS
+        bx.errorbar([m], [q], yerr=[[q - lo], [hi - q]], fmt="none", ecolor=col, elinewidth=0.8, capsize=1.5,
+                    zorder=3)
+        bx.scatter([m], [q], s=26, marker="s" if t != "div7_6d" else "D", facecolor=col if pred else "white",
+                   edgecolor=col, linewidth=1.2, zorder=4)
+    # direct labels, placed clear of the markers
+    lab = {"div7": ("div7", (4.3, 79), "center"), "div13": ("div13", (7.4, 57), "left"),
+           "div11": ("div11", (6.5, 93.5), "center"), "div3": ("div3", (24, 93.5), "center"),
+           "div2": ("div2", (36, 93.5), "center")}
+    for t, (txt, xy, ha) in lab.items():
+        if any(tt == t for tt, _ in agg):
+            bx.annotate(txt, xy, fontsize=6, color=TASK_COLOR.get(t, MUTED), ha=ha)
+    if ("div7_6d", 180) in agg:                     # shares m with div7 n=270; point to it with a leader line
+        m6, q6 = agg[("div7_6d", 180)][:2]
+        bx.annotate("div7, 6 digits", (m6, q6), xytext=(27, 84), fontsize=6, color=TASK_COLOR["div7_6d"],
+                    ha="center", arrowprops=dict(arrowstyle="-", color=TASK_COLOR["div7_6d"], lw=0.6))
     bx.axhline(50, color=MUTED, lw=0.7, ls=(0, (1, 2)), zorder=1)
     bx.set_xscale("log")
     bx.set_xticks([3, 5, 10, 20, 40])
@@ -164,9 +186,14 @@ def fig_map():
     bx.set_xlim(2.5, 45)
     bx.set_ylim(40, 103)
     bx.set_xlabel("transitions per table entry $m$")
-    bx.set_title("(b) per-step $q$ and accuracy vs. $m$", fontsize=8, loc="left")
+    bx.set_ylabel("per-step accuracy $q$ (%)", fontsize=7)
+    bx.set_title("(b) per-step accuracy $q$ vs. $m$", fontsize=8, loc="left")
     bx.grid(color=GRID, lw=0.6, zorder=0)
-    # marker key (squares = p, circles = accuracy, hollow/filled) is given in the figure caption
+    bx.legend(handles=[Line2D([], [], marker="s", ls="none", color=MUTED, markerfacecolor=MUTED, markersize=4,
+                              label="predicted (S7/S9)"),
+                       Line2D([], [], marker="s", ls="none", color=MUTED, markerfacecolor="white", markersize=4,
+                              label="observed first")],
+              loc="lower right", fontsize=5.5, frameon=False, handletextpad=0.3, borderaxespad=0.2)
     for task in TASK_ORDER:
         x = MN.fair_probe(task)
         a = MN.acc_mean(task, "A", N)
