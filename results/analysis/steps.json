@@ -1301,6 +1301,84 @@
    "eval_task": "div13",
    "train_task": "div13",
    "arm": "B",
+   "n": 360,
+   "seed": 2,
+   "model": "Qwen2.5-1.5B-Instruct",
+   "prompt_mode": "plain",
+   "gens_path": "results/v2/gens/Qwen2.5-1.5B-Instruct/div13_B_360_2.jsonl",
+   "n_items": 240,
+   "k": 4,
+   "answer_acc": 0.725,
+   "parse_rate": 1.0,
+   "exact_k_steps_rate": 1.0,
+   "p_uncond": 0.7052083333333333,
+   "p_cond": 0.828009828009828,
+   "p_cond_by_position": [
+    1.0,
+    0.8208333333333333,
+    0.6954314720812182,
+    0.7299270072992701
+   ],
+   "p_cond_after_first_step": 0.7560975609756098,
+   "p_uncond_by_position": [
+    1.0,
+    0.8208333333333333,
+    0.5708333333333333,
+    0.42916666666666664
+   ],
+   "local_arith_acc": 0.7979166666666667,
+   "local_arith_by_position": [
+    1.0,
+    0.8208333333333333,
+    0.6791666666666667,
+    0.6916666666666667
+   ],
+   "local_arith_pow_k": 0.40534997108365295,
+   "arith_on_claimed_operands_acc": 0.7979166666666667,
+   "digit_copy_acc": 1.0,
+   "carry_consistency": 1.0,
+   "trace_correct_rate": 0.4166666666666667,
+   "answer_trace_consistency": 1.0,
+   "n_consistency_items": 240,
+   "answer_acc_given_trace_correct": 1.0,
+   "answer_acc_given_trace_wrong": 0.5285714285714286,
+   "predicted_acc_p_cond_pow_k": 0.47004773746519785,
+   "predicted_acc_prod_p_i": 0.41666666666666663,
+   "post_hoc_predicted_answer_acc_own_g": 0.750165361947879,
+   "observed_minus_predicted_pp": 25.49522625348021,
+   "ground_truth_mismatches": 0,
+   "yes_rate": 0.275,
+   "error_anatomy": {
+    "n_wrong_traces": 140,
+    "first_error_position": {
+     "2": 43,
+     "3": 60,
+     "4": 37
+    },
+    "final_remainder_of_wrong_traces": {
+     "0": 8,
+     "1": 6,
+     "2": 5,
+     "3": 7,
+     "4": 9,
+     "5": 2,
+     "6": 19,
+     "7": 17,
+     "8": 12,
+     "9": 18,
+     "10": 4,
+     "11": 16,
+     "12": 16,
+     "13": 1
+    },
+    "wrong_traces_ending_in_0": 0.05714285714285714
+   }
+  },
+  {
+   "task": "div13",
+   "eval_task": "div13",
+   "train_task": "div13",
+   "arm": "B",
    "n": 540,
    "seed": 0,
    "model": "Qwen2.5-1.5B-Instruct",
@@ -1580,6 +1658,78 @@
    }
   },
   {
+   "task": "div13",
+   "eval_task": "div13",
+   "train_task": "div13",
+   "arm": "B",
+   "n": 540,
+   "seed": 2,
+   "model": "Qwen2.5-1.5B-Instruct",
+   "prompt_mode": "plain",
+   "gens_path": "results/v2/gens/Qwen2.5-1.5B-Instruct/div13_B_540_2.jsonl",
+   "n_items": 240,
+   "k": 4,
+   "answer_acc": 0.9583333333333334,
+   "parse_rate": 1.0,
+   "exact_k_steps_rate": 1.0,
+   "p_uncond": 0.953125,
+   "p_cond": 0.9765208110992529,
+   "p_cond_by_position": [
+    1.0,
+    0.975,
+    0.9529914529914529,
+    0.9775784753363229
+   ],
+   "p_cond_after_first_step": 0.9684361549497847,
+   "p_uncond_by_position": [
+    1.0,
+    0.975,
+    0.9291666666666667,
+    0.9083333333333333
+   ],
+   "local_arith_acc": 0.971875,
+   "local_arith_by_position": [
+    1.0,
+    0.975,
+    0.95,
+    0.9625
+   ],
+   "local_arith_pow_k": 0.8921577301979067,
+   "arith_on_claimed_operands_acc": 0.971875,
+   "digit_copy_acc": 1.0,
+   "carry_consistency": 1.0,
+   "trace_correct_rate": 0.9083333333333333,
+   "answer_trace_consistency": 1.0,
+   "n_consistency_items": 240,
+   "answer_acc_given_trace_correct": 1.0,
+   "answer_acc_given_trace_wrong": 0.5454545454545454,
+   "predicted_acc_p_cond_pow_k": 0.909339408459851,
+   "predicted_acc_prod_p_i": 0.9083333333333333,
+   "post_hoc_predicted_answer_acc_own_g": 0.9587906402090232,
+   "observed_minus_predicted_pp": 4.899392487348242,
+   "ground_truth_mismatches": 0,
+   "yes_rate": 0.4583333333333333,
+   "error_anatomy": {
+    "n_wrong_traces": 22,
+    "first_error_position": {
+     "2": 6,
+     "3": 11,
+     "4": 5
+    },
+    "final_remainder_of_wrong_traces": {
+     "1": 1,
+     "2": 2,
+     "3": 2,
+     "4": 1,
+     "6": 3,
+     "7": 3,
+     "10": 2,
+     "11": 8
+    },
+    "wrong_traces_ending_in_0": 0.0
+   }
+  },
+  {
    "task": "div2",
    "eval_task": "div2",
    "train_task": "div2",
@@ -1642,6 +1792,65 @@
      "1": 3
     },
     "wrong_traces_ending_in_0": 0.5714285714285714
+   }
+  },
+  {
+   "task": "div2",
+   "eval_task": "div2",
+   "train_task": "div2",
+   "arm": "B",
+   "n": 180,
+   "seed": 1,
+   "model": "Qwen2.5-1.5B-Instruct",
+   "prompt_mode": "plain",
+   "gens_path": "results/v2/gens/Qwen2.5-1.5B-Instruct/div2_B_180_1.jsonl",
+   "n_items": 240,
+   "k": 4,
+   "answer_acc": 1.0,
+   "parse_rate": 1.0,
+   "exact_k_steps_rate": 1.0,
+   "p_uncond": 1.0,
+   "p_cond": 1.0,
+   "p_cond_by_position": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "p_cond_after_first_step": 1.0,
+   "p_uncond_by_position": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "local_arith_acc": 1.0,
+   "local_arith_by_position": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "local_arith_pow_k": 1.0,
+   "arith_on_claimed_operands_acc": 1.0,
+   "digit_copy_acc": 1.0,
+   "carry_consistency": 1.0,
+   "trace_correct_rate": 1.0,
+   "answer_trace_consistency": 1.0,
+   "n_consistency_items": 240,
+   "answer_acc_given_trace_correct": 1.0,
+   "answer_acc_given_trace_wrong": null,
+   "predicted_acc_p_cond_pow_k": 1.0,
+   "predicted_acc_prod_p_i": 1.0,
+   "post_hoc_predicted_answer_acc_own_g": null,
+   "observed_minus_predicted_pp": 0.0,
+   "ground_truth_mismatches": 0,
+   "yes_rate": 0.5,
+   "error_anatomy": {
+    "n_wrong_traces": 0,
+    "first_error_position": {},
+    "final_remainder_of_wrong_traces": {},
+    "wrong_traces_ending_in_0": null
    }
   },
   {
@@ -1944,6 +2153,148 @@
    "eval_task": "div7",
    "train_task": "div7",
    "arm": "B",
+   "n": 60,
+   "seed": 1,
+   "model": "Qwen2.5-1.5B-Instruct",
+   "prompt_mode": "plain",
+   "gens_path": "results/v2/gens/Qwen2.5-1.5B-Instruct/div7_B_60_1.jsonl",
+   "n_items": 240,
+   "k": 4,
+   "answer_acc": 0.5166666666666667,
+   "parse_rate": 1.0,
+   "exact_k_steps_rate": 0.9958333333333333,
+   "p_uncond": 0.4864583333333333,
+   "p_cond": 0.6288343558282209,
+   "p_cond_by_position": [
+    1.0,
+    0.45,
+    0.37962962962962965,
+    0.328125
+   ],
+   "p_cond_after_first_step": 0.41262135922330095,
+   "p_uncond_by_position": [
+    1.0,
+    0.45,
+    0.26666666666666666,
+    0.22916666666666666
+   ],
+   "local_arith_acc": 0.48125,
+   "local_arith_by_position": [
+    1.0,
+    0.45,
+    0.24583333333333332,
+    0.22916666666666666
+   ],
+   "local_arith_pow_k": 0.05363928375244141,
+   "arith_on_claimed_operands_acc": 0.48279457768508866,
+   "digit_copy_acc": 0.9916579770594369,
+   "carry_consistency": 1.0,
+   "trace_correct_rate": 0.05,
+   "answer_trace_consistency": 1.0,
+   "n_consistency_items": 240,
+   "answer_acc_given_trace_correct": 1.0,
+   "answer_acc_given_trace_wrong": 0.49122807017543857,
+   "predicted_acc_p_cond_pow_k": 0.15636697836870297,
+   "predicted_acc_prod_p_i": 0.0560546875,
+   "post_hoc_predicted_answer_acc_own_g": 0.570783199520919,
+   "observed_minus_predicted_pp": 36.029968829796374,
+   "ground_truth_mismatches": 0,
+   "yes_rate": 0.325,
+   "error_anatomy": {
+    "n_wrong_traces": 228,
+    "first_error_position": {
+     "2": 132,
+     "3": 67,
+     "4": 29
+    },
+    "final_remainder_of_wrong_traces": {
+     "0": 70,
+     "1": 1,
+     "2": 26,
+     "3": 24,
+     "4": 47,
+     "5": 25,
+     "6": 35
+    },
+    "wrong_traces_ending_in_0": 0.30701754385964913
+   }
+  },
+  {
+   "task": "div7",
+   "eval_task": "div7",
+   "train_task": "div7",
+   "arm": "B",
+   "n": 60,
+   "seed": 2,
+   "model": "Qwen2.5-1.5B-Instruct",
+   "prompt_mode": "plain",
+   "gens_path": "results/v2/gens/Qwen2.5-1.5B-Instruct/div7_B_60_2.jsonl",
+   "n_items": 240,
+   "k": 4,
+   "answer_acc": 0.5333333333333333,
+   "parse_rate": 1.0,
+   "exact_k_steps_rate": 1.0,
+   "p_uncond": 0.5572916666666666,
+   "p_cond": 0.7169540229885057,
+   "p_cond_by_position": [
+    1.0,
+    0.5625,
+    0.5259259259259259,
+    0.654320987654321
+   ],
+   "p_cond_after_first_step": 0.5679824561403509,
+   "p_uncond_by_position": [
+    1.0,
+    0.5625,
+    0.3375,
+    0.32916666666666666
+   ],
+   "local_arith_acc": 0.6395833333333333,
+   "local_arith_by_position": [
+    1.0,
+    0.5625,
+    0.5,
+    0.49583333333333335
+   ],
+   "local_arith_pow_k": 0.1673356798148449,
+   "arith_on_claimed_operands_acc": 0.6427083333333333,
+   "digit_copy_acc": 0.990625,
+   "carry_consistency": 1.0,
+   "trace_correct_rate": 0.1875,
+   "answer_trace_consistency": 1.0,
+   "n_consistency_items": 240,
+   "answer_acc_given_trace_correct": 1.0,
+   "answer_acc_given_trace_wrong": 0.4256410256410256,
+   "predicted_acc_p_cond_pow_k": 0.2642197176019008,
+   "predicted_acc_prod_p_i": 0.19356995884773665,
+   "post_hoc_predicted_answer_acc_own_g": 0.5773979916482712,
+   "observed_minus_predicted_pp": 26.91136157314325,
+   "ground_truth_mismatches": 0,
+   "yes_rate": 0.475,
+   "error_anatomy": {
+    "n_wrong_traces": 195,
+    "first_error_position": {
+     "2": 105,
+     "3": 64,
+     "4": 26
+    },
+    "final_remainder_of_wrong_traces": {
+     "0": 83,
+     "1": 9,
+     "2": 28,
+     "3": 12,
+     "4": 26,
+     "5": 15,
+     "6": 22
+    },
+    "wrong_traces_ending_in_0": 0.4256410256410256
+   }
+  },
+  {
+   "task": "div7",
+   "eval_task": "div7",
+   "train_task": "div7",
+   "arm": "B",
    "n": 90,
    "seed": 0,
    "model": "Qwen2.5-1.5B-Instruct",
@@ -2223,6 +2574,77 @@
      "6": 15
     },
     "wrong_traces_ending_in_0": 0.654054054054054
+   }
+  },
+  {
+   "task": "div7",
+   "eval_task": "div7",
+   "train_task": "div7",
+   "arm": "B",
+   "n": 90,
+   "seed": 2,
+   "model": "Qwen2.5-1.5B-Instruct",
+   "prompt_mode": "plain",
+   "gens_path": "results/v2/gens/Qwen2.5-1.5B-Instruct/div7_B_90_2.jsonl",
+   "n_items": 240,
+   "k": 4,
+   "answer_acc": 0.5666666666666667,
+   "parse_rate": 1.0,
+   "exact_k_steps_rate": 1.0,
+   "p_uncond": 0.5489583333333333,
+   "p_cond": 0.706821480406386,
+   "p_cond_by_position": [
+    1.0,
+    0.55,
+    0.5151515151515151,
+    0.6103896103896104
+   ],
+   "p_cond_after_first_step": 0.5501113585746102,
+   "p_uncond_by_position": [
+    1.0,
+    0.55,
+    0.32083333333333336,
+    0.325
+   ],
+   "local_arith_acc": 0.6114583333333333,
+   "local_arith_by_position": [
+    1.0,
+    0.55,
+    0.4666666666666667,
+    0.42916666666666664
+   ],
+   "local_arith_pow_k": 0.139787221556534,
+   "arith_on_claimed_operands_acc": 0.6114583333333333,
+   "digit_copy_acc": 1.0,
+   "carry_consistency": 1.0,
+   "trace_correct_rate": 0.17083333333333334,
+   "answer_trace_consistency": 1.0,
+   "n_consistency_items": 240,
+   "answer_acc_given_trace_correct": 1.0,
+   "answer_acc_given_trace_wrong": 0.47738693467336685,
+   "predicted_acc_p_cond_pow_k": 0.24959676789126897,
+   "predicted_acc_prod_p_i": 0.17294372294372293,
+   "post_hoc_predicted_answer_acc_own_g": 0.6078294666366431,
+   "observed_minus_predicted_pp": 31.70698987753977,
+   "ground_truth_mismatches": 0,
+   "yes_rate": 0.3416666666666667,
+   "error_anatomy": {
+    "n_wrong_traces": 199,
+    "first_error_position": {
+     "2": 108,
+     "3": 64,
+     "4": 27
+    },
+    "final_remainder_of_wrong_traces": {
+     "0": 57,
+     "1": 5,
+     "2": 34,
+     "3": 25,
+     "4": 26,
+     "5": 39,
+     "6": 13
+    },
+    "wrong_traces_ending_in_0": 0.2864321608040201
    }
   },
   {
@@ -3075,6 +3497,77 @@
      "6": 8
     },
     "wrong_traces_ending_in_0": 0.20634920634920634
+   }
+  },
+  {
+   "task": "div7",
+   "eval_task": "div7",
+   "train_task": "div7",
+   "arm": "B",
+   "n": 270,
+   "seed": 2,
+   "model": "Qwen2.5-1.5B-Instruct",
+   "prompt_mode": "plain",
+   "gens_path": "results/v2/gens/Qwen2.5-1.5B-Instruct/div7_B_270_2.jsonl",
+   "n_items": 240,
+   "k": 4,
+   "answer_acc": 0.9208333333333333,
+   "parse_rate": 1.0,
+   "exact_k_steps_rate": 1.0,
+   "p_uncond": 0.9052083333333333,
+   "p_cond": 0.9517543859649122,
+   "p_cond_by_position": [
+    1.0,
+    0.925,
+    0.9459459459459459,
+    0.9333333333333333
+   ],
+   "p_cond_after_first_step": 0.9345238095238095,
+   "p_uncond_by_position": [
+    1.0,
+    0.925,
+    0.875,
+    0.8208333333333333
+   ],
+   "local_arith_acc": 0.9489583333333333,
+   "local_arith_by_position": [
+    1.0,
+    0.925,
+    0.9375,
+    0.9333333333333333
+   ],
+   "local_arith_pow_k": 0.8109397255238192,
+   "arith_on_claimed_operands_acc": 0.95,
+   "digit_copy_acc": 0.9989583333333333,
+   "carry_consistency": 1.0,
+   "trace_correct_rate": 0.8166666666666667,
+   "answer_trace_consistency": 1.0,
+   "n_consistency_items": 240,
+   "answer_acc_given_trace_correct": 1.0,
+   "answer_acc_given_trace_wrong": 0.5681818181818182,
+   "predicted_acc_p_cond_pow_k": 0.8205396038619406,
+   "predicted_acc_prod_p_i": 0.8166666666666667,
+   "post_hoc_predicted_answer_acc_own_g": 0.9225057380312925,
+   "observed_minus_predicted_pp": 10.02937294713927,
+   "ground_truth_mismatches": 0,
+   "yes_rate": 0.44583333333333336,
+   "error_anatomy": {
+    "n_wrong_traces": 44,
+    "first_error_position": {
+     "2": 18,
+     "3": 12,
+     "4": 14
+    },
+    "final_remainder_of_wrong_traces": {
+     "0": 3,
+     "1": 5,
+     "2": 7,
+     "3": 3,
+     "4": 12,
+     "5": 9,
+     "6": 5
+    },
+    "wrong_traces_ending_in_0": 0.06818181818181818
    }
   },
   {
