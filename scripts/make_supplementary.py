@@ -205,6 +205,9 @@ def prereg_manifest():
         lab = next((v for k, v in HASH_LABELS.items() if h.startswith(k)), "-")
         subj = subj.replace("|", "/")
         rows.append("| %s | %s | %s |" % (lab, t, subj))
+    rows.append("")
+    rows.append("Note: \"review\" in commit subjects (for example P5) and \"Reviewers asked\" in the S12 entry of "
+                "PREDICTIONS.md refer to internal review passes run with AI agents during the study, not to peer review.")
     return "\n".join(rows) + "\n"
 
 
@@ -248,7 +251,7 @@ is regenerated from the files in this folder.
 | `results/queues/`, `results/queue_L1.txt` | the exact cell lists that were run (one cell per line: `<task> <arm> <n> <seed> [worker flags]`). |
 | `results/logic_dataset.json` | dataset of the earlier logic study. |
 
-Run records: {n_rows} rows in total. Each row has `task, arm, n, seed, acc, n_test, model` and `bits`, a hex
+Run records: {n_rows} rows in the run and eval files, plus the S12 sweep rows in `results/v2/sweep/`. Two cells appear in both `results/thinking_vs_data/runs.jsonl` and `results/v2/runs_Qwen2.5-1.5B-Instruct.jsonl` with identical per-item bits (1.5B prime A and div7 B, n=180, seed 0: the deterministic re-execution) and are counted once. Each row has `task, arm, n, seed, acc, n_test, model` and `bits`, a hex
 bitmap of per-item correctness over the fixed test set (item order of `datasets_v2.json`), from which every
 paired test (McNemar, bootstrap over items and seeds) is recomputed. `adapter` fields are repo-relative;
 the LoRA adapters themselves (several hundred MB) are not included and are re-created by training.

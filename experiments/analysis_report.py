@@ -28,7 +28,7 @@ TRIVIAL = {"majority", "odd", "last_digit_1379", "no_factor_le_3", "no_factor_le
            "last_digit_is_7", "last_digit_is_3", "last_digit_is_1", "last_digit_0_or_5", "last_digit_even",
            "digit_sum_div_7", "digit_sum_div_3", "digit_sum_div_11", "digit_sum_div_13", "digit_sum_div_2",
            "contains_digit_7"}
-# Rules whose outcome was effectively known before they were preregistered (flagged in the README; reviewer request)
+# Rules whose outcome was effectively known before they were preregistered (flagged in the README; requested by an internal review pass run with AI agents)
 SETTLED = {"S3": "NOTE: effectively settled before preregistration -- divisibility by 2 is a last-digit rule, which the "
                  "prior grid already showed A learns (prime A follows the last-digit rule; one-hot probes reach 100% on div2).",
            "S6": "NOTE: effectively settled before preregistration -- in the prior 240-item prime runs A already called all "

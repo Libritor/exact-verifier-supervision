@@ -620,7 +620,7 @@ def prereg_macros(p_step):
         put(tp + "Few", pct(acc_mean(f"{task}[fewshot4]", "base", 0)), "fewshot4 eval")
 
 
-# ------------------------------------------------------------------------------------------ review additions
+# ------------------------------------------------------------------------------------------ additions from an internal review pass run with AI agents
 CAP = {"div7": "Divseven", "div7_6d": "DivsevenSix", "div13": "Divthirteen", "div11": "Diveleven", "div3": "Divthree",
        "div2": "Divtwo"}
 S7_CELLS = {("div13", 540), ("div7", 270), ("div7", 90), ("div11", 180), ("div3", 180), ("div2", 180)}
@@ -836,7 +836,7 @@ def scale_macros():
             put(tp + "BAd" + SEEDW[s_], "%+.1f" % (100 * (b["acc"] - a["acc"])) if (a and b) else TBD, "runs")
 
 
-# ------------------------------------------------------------------------------------------ review round 2
+# ------------------------------------------------------------------------------------------ second internal review pass run with AI agents
 DASH = "--"
 # cells that queued runs (results/queues/lap_S.txt, lap_T4_05b.txt, q3_star_*.txt) may still fill: when absent at
 # build time they render as a dash (not run by submission), never as [TBD]
