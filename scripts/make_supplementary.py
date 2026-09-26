@@ -58,6 +58,7 @@ INCLUDE = [
     "results/v2/*.json", "results/v2/*.txt",
     "results/v2/runs_*.jsonl", "results/v2/evals_*.jsonl",
     "results/v2/gens/**/*.jsonl", "results/v2/star_samples/**/*.jsonl",
+    "results/v2/sweep/*.jsonl", "results/v2/sweep/gens/**/*.jsonl",
     "results/analysis/*",
 ]
 EXCLUDE_RE = re.compile(r"(__pycache__|\.pyc$|\.log$|\.cmd$|\.sh$|(^|/)\.git|KHALIL|failures)", re.I)
@@ -242,6 +243,7 @@ is regenerated from the files in this folder.
 | `results/v2/evals_<model>.jsonl` | eval-only rows (zero-shot CoT, 4-shot, transfer to other test sets) ({", ".join(evals)}). |
 | `results/v2/gens/<model>/` | saved generations, one row per test item: id, gold, pred, correct, gen, n_gen_tokens, hit_cap. File name `<task>_<arm>_<n>_<seed>[__on-<eval_task>][__<prompt_mode>][__reeval].jsonl`. |
 | `results/v2/star_samples/<model>/` | arm S: the K sampled solutions per training item and which were kept by the verifier. |
+| `results/v2/sweep/` | S12 answer-only learning-rate/epoch sweep: one file per configuration (`sweepA_<task>_lr<lr>_ep<epochs>.jsonl`, rows carry `lr` and `epochs`) and its generations under `sweep/gens/`; kept out of the main run files so the main analyses never mix them with the default-configuration cells. |
 | `results/analysis/` | outputs of the analysis scripts (stats, per-step accuracy, shortcut rules, probe, token counts). |
 | `results/queues/`, `results/queue_L1.txt` | the exact cell lists that were run (one cell per line: `<task> <arm> <n> <seed> [worker flags]`). |
 | `results/logic_dataset.json` | dataset of the earlier logic study. |
@@ -391,7 +393,7 @@ def main():
     raw = sum(p.stat().st_size for p in stage.rglob("*") if p.is_file())
     print("zip: %s" % out)
     print("size: %.2f MB compressed (%.2f MB uncompressed), %d files" % (size / 2**20, raw / 2**20, len(names)))
-    for d in ("experiments", "paper", "results/v2/gens", "results/v2/star_samples", "results/analysis"):
+    for d in ("experiments", "paper", "results/v2/gens", "results/v2/star_samples", "results/v2/sweep", "results/analysis"):
         print("  %-26s %4d files" % (d, sum(1 for n in names if n.startswith(TOP + "/" + d + "/"))))
     ok = True
     if hits:
