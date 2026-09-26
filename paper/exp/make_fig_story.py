@@ -177,8 +177,8 @@ def panel_d(ax, runs, model="Qwen2.5-1.5B-Instruct"):
                         fontsize=6.5, color=MUTED)
     ax.axhline(50, color=MUTED, lw=0.7, ls=(0, (1, 2)), zorder=1)
     ax.set_xscale("log")
-    ax.set_xlabel("supervised completion tokens per epoch")
-    ax.set_ylabel("div7 accuracy (%), 1.5B")
+    ax.set_xlabel("supervised tokens per epoch")
+    ax.set_ylabel("div7 acc. (%), 1.5B")
     ax.set_ylim(40, 108)
     ax.set_title("(d) tokens are not matched", fontsize=9.5, loc="left")
     ax.legend(frameon=False, fontsize=7.5, loc="upper left")
@@ -187,7 +187,7 @@ def panel_d(ax, runs, model="Qwen2.5-1.5B-Instruct"):
 
 def main():
     runs = load_runs()
-    fig = plt.figure(figsize=(7.0, 3.95))
+    fig = plt.figure(figsize=(7.0, 3.8))
     gs = fig.add_gridspec(2, 2, width_ratios=[1.55, 1.0], height_ratios=[1.0, 0.95], hspace=1.05, wspace=0.32)
     axes = [fig.add_subplot(gs[0, 0]), fig.add_subplot(gs[0, 1]), fig.add_subplot(gs[1, 0]), fig.add_subplot(gs[1, 1])]
     panel_a(axes[0], runs)
