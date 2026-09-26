@@ -3,7 +3,7 @@
 \newcommand{\SElevenResult}{on SmolLM2-1.7B-Instruct, traces beat answers on div7 by +15.0 and +22.5 points (seeds 0 and 1), significant in both, so the 20-point threshold fails in seed 0; the grounding control stays within 6.7 points of A}
 \newcommand{\SElevenVerdict}{failed}
 \newcommand{\STenResult}{arm S reaches 77.9\% and 65.8\% on div7 (seeds 0 and 1) and 64.6\% on valid}
-\newcommand{\STwelveResult}{the best of 8 answer-only configurations reaches 53.3\% on div7 (lr 5e-5, 30 epochs, seed 1), 4 of 4 configurations avoid a constant answer in both seeds, and the div3 control reaches 92.1\%}
+\newcommand{\STwelveResult}{the best of 8 answer-only runs (4 configurations x 2 seeds) reaches 53.3\% on div7 (lr 5e-5, 30 epochs, seed 1), 4 of 4 configurations avoid a constant answer in both seeds, and the div3 control reaches 92.1\%}
 \newcommand{\STwelveVerdict}{passed}
 \newcommand{\SsevenCellA}{holds}
 \newcommand{\SsevenCellB}{holds}
@@ -15,6 +15,7 @@
 \newcommand{\SsevenScored}{5}
 \newcommand{\alphaLevel}{0.05}
 \newcommand{\baseEvalRatio}{38}
+\newcommand{\bigAcotShortMin}{97.9}
 \newcommand{\cTokDiff}{7}
 \newcommand{\ciHalf}{6}
 \newcommand{\compPop}{7{,}939}
@@ -916,6 +917,8 @@
 \newcommand{\sevenBdivsevenABasepsOne}{8\times 10^{-11}}
 \newcommand{\sevenBdivsevenABasepsZero}{1.6\times 10^{-14}}
 \newcommand{\sevenBdivsevenASeedTxt}{two seeds}
+\newcommand{\sevenBdivsevenAcot}{55.0}
+\newcommand{\sevenBdivsevenAcotShort}{100.0}
 \newcommand{\sevenBdivsevenAnFiveForty}{\TBD}
 \newcommand{\sevenBdivsevenAnFiveFortysZero}{\TBD}
 \newcommand{\sevenBdivsevenAnNinety}{\TBD}
@@ -1002,6 +1005,8 @@
 \newcommand{\sevenBdivsevenTransferSixB}{\TBD}
 \newcommand{\sevenBdivthirteenA}{46.7}
 \newcommand{\sevenBdivthirteenASeedTxt}{two seeds}
+\newcommand{\sevenBdivthirteenAcot}{46.2}
+\newcommand{\sevenBdivthirteenAcotShort}{100.0}
 \newcommand{\sevenBdivthirteenAnFiveForty}{\TBD}
 \newcommand{\sevenBdivthirteenAnFiveFortysZero}{\TBD}
 \newcommand{\sevenBdivthirteenAnNinety}{\TBD}
@@ -1200,6 +1205,8 @@
 \newcommand{\threeBdivsevenABasepsOne}{6.7\times 10^{-31}}
 \newcommand{\threeBdivsevenABasepsZero}{8.4\times 10^{-20}}
 \newcommand{\threeBdivsevenASeedTxt}{two seeds}
+\newcommand{\threeBdivsevenAcot}{53.3}
+\newcommand{\threeBdivsevenAcotShort}{97.9}
 \newcommand{\threeBdivsevenAnFiveForty}{\TBD}
 \newcommand{\threeBdivsevenAnFiveFortysZero}{\TBD}
 \newcommand{\threeBdivsevenAnNinety}{\TBD}
@@ -1299,6 +1306,8 @@
 \newcommand{\threeBdivsevenTransferSixBsZero}{54.2}
 \newcommand{\threeBdivthirteenA}{49.2}
 \newcommand{\threeBdivthirteenASeedTxt}{two seeds}
+\newcommand{\threeBdivthirteenAcot}{50.0}
+\newcommand{\threeBdivthirteenAcotShort}{100.0}
 \newcommand{\threeBdivthirteenAnFiveForty}{50.0}
 \newcommand{\threeBdivthirteenAnFiveFortysZero}{50.0}
 \newcommand{\threeBdivthirteenAnNinety}{\TBD}

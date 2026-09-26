@@ -1143,7 +1143,7 @@ def sweep_macros():
         verdict = "not complete"
     put("STwelveVerdict", verdict, "S12 rule: no div7 A >= 65%, >= 1 non-collapsing config, div3 A >= 90%")
     if n_cells:
-        put("STwelveResult", "the best of %d answer-only configurations reaches %s\\%% on div7 (%s), %d of 4 "
+        put("STwelveResult", "the best of %d answer-only runs (4 configurations x 2 seeds) reaches %s\\%% on div7 (%s), %d of 4 "
             "configurations avoid a constant answer in both seeds, and the div3 control reaches %s\\%%"
             % (n_cells, pct(max(cells)[0]), max(cells)[1], non_collapse, pct(d3["acc"]) if d3 else DASH),
             "S12 summary")
@@ -1175,6 +1175,21 @@ def sweep_macros():
     b_rows = gen_rows("div7_base_0_0__cot")
     put("divsevenBaseCotMedTok", "%d" % median(r["n_gen_tokens"] for r in b_rows) if b_rows else DASH,
         "median generated tokens, base under the CoT prompt")
+    # 3B / 7B answer-only (A, seed 0) models under the CoT prompt (RTX 5090 sixth package)
+    shorts = []
+    for mpre, mdl in (("threeB", MODELS["threeB"]), ("sevenB", MODELS["sevenB"])):
+        for t, tp in (("div7", "divseven"), ("div13", "divthirteen")):
+            r = run(t + "[cot]", "A", MAIN_N, 0, mdl)
+            put(mpre + tp + "Acot", pct(r["acc"]) if r else DASH, "A seed 0 under the CoT prompt")
+            g = []
+            f = os.path.join(ROOT, "results", "v2", "gens", C.short_model(mdl), "%s_A_180_0__cot.jsonl" % t)
+            if os.path.exists(f):
+                g = [json.loads(l) for l in open(f, encoding="utf-8") if l.strip()]
+            if g:
+                sh = 100.0 * sum(1 for x in g if x["n_gen_tokens"] <= 3) / len(g)
+                shorts.append(sh)
+                put(mpre + tp + "AcotShort", "%.1f" % sh, "% of items answered in <= 3 generated tokens")
+    put("bigAcotShortMin", "%.1f" % min(shorts) if shorts else DASH, "lowest share of <=3-token answers, 3B/7B A under CoT")
     # S11: second model family (fallback SmolLM2-1.7B-Instruct when Llama-3.2-3B was not downloadable)
     fam_f = os.path.join(ROOT, "results", "v2", "second_family_model.txt")
     fam = open(fam_f, encoding="utf-8").read().strip() if os.path.exists(fam_f) else None
